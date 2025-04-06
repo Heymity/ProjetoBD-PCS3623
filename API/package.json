@@ -1,0 +1,24 @@
+{
+  "name": "bd-api",
+  "version": "1.0.0",
+  "description": "A simple express.js API for a college project",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "dev": "npx nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel Pasquale",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cryptojs": "^2.5.3",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
