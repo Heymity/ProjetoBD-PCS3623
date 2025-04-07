@@ -29,36 +29,20 @@ export async function addGame(name, description, releaseDate, players, image, st
         throw new Error('Missing required fields')
     }
 
-    const imageId = await handleImages(image)
+    const imageId = await handleImages(image.filename)
 
     const [rows] = await pool.query("INSERT INTO PCS_BD.JOGO VALUES (?, ?, ?, ?, ?, ?, ?)", [0, name, description, releaseDate, players, imageId, studioId])
     return rows
 }
 
 async function handleImages(image) {
-    if (!image || !image.name || !image.data) {
+    if (!image) {
         return null
     }
 
-    if (!fs.existsSync(path.join(process.env.IMAGES_PATH, 'images'))) {
-        fs.mkdirSync(path.join(process.env.IMAGES_PATH, 'images'))
-    }
-  
-    let imagePath = path.join(process.env.IMAGES_PATH, 'images', image.name)
-    // check if path is valid
-    if (!path.isAbsolute(imagePath)) {
-        throw new Error('Invalid path')
-    }
-    // check if file exists
-    if (fs.existsSync(imagePath)) {
-        imagePath = path.join(process.env.IMAGES_PATH, 'images', `${Date.now()}-${image.name}`)
-        console.log(`File already exists, saving as ${imagePath}`)
-    }
+    console.log(`Image saved with ${image}`)
 
-    fs.writeFileSync(imagePath, image.data)
-    console.log(`Image saved to ${imagePath}`)
-
-    const [rows] = await pool.query("INSERT INTO PCS_BD.FOTO (FOTO) VALUES (?)", [imagePath])
+    const [rows] = await pool.query("INSERT INTO PCS_BD.FOTO (FOTO) VALUES (?)", [image])
     return rows.insertId
 
 }
@@ -119,7 +103,7 @@ export async function addUser(email, name, description, password, image) {
         throw new Error('Missing required fields')
     }
 
-    const imageId = await handleImages(image)
+    const imageId = await handleImages(image.filename)
 
     const hash = bcrypt.hashSync(password, 10);
 
@@ -168,6 +152,16 @@ export async function getAvaliationByUserName(username) {
         [username])
     return rows
 }
+
+export async function getFotoById(fotoId) {
+    const [rows] = await pool.query("SELECT FOTO FROM PCS_BD.FOTO WHERE ID_FOTO = ?", [fotoId])
+	if (rows.length === 0) {
+		throw new Error('Image not found')
+	}
+	const imagePath = rows[0].FOTO
+	return imagePath
+}
+
 
 const estudios = await queryEstudios()
 console.log(estudios)

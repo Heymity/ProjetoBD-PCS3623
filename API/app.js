@@ -1,12 +1,21 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { queryGames, gameById, addGame, searchGames, getGenders, queryEstudios, estudioById, addUser, getUserForLogin, addAvaliation, getAvaliationByGameId, getAvaliationByUserName } from './database.js'
- 
+import { queryGames, gameById, addGame, searchGames, getGenders, queryEstudios, estudioById, addUser, getUserForLogin, addAvaliation, getAvaliationByGameId, getFotoById, getAvaliationByUserName } from './database.js'
+
+import dotenv from 'dotenv' 
+import multer from 'multer'
+
+dotenv.config()
+
 const app = express()
 const port = 3000
 
 app.use(express.json())
+app.use('/', express.static('public'))
+
+
+const upload = multer({ dest: 'public/images/' })
 
 async function authenticateToken(req, res, next) {
 	const authHeader = req.headers['authorization']
@@ -25,6 +34,19 @@ async function authenticateToken(req, res, next) {
 	})
 }
 
+app.get('/imageFromId/:id', async (req, res) => {
+	const params = req.params
+	const id = params.id
+	
+	const imagePath = await getFotoById(id)
+	if (!imagePath) {
+		return res.status(404).send('Image not found')
+	}
+
+	console.log(imagePath)
+	res.sendFile(imagePath, { root: './public/images/' })
+})
+
 app.get('/jogo', async (req, res) => {
 	const games = await queryGames();
     res.send(games)
@@ -37,13 +59,14 @@ app.get('/jogo/:id', async (req, res) => {
     res.send(game)
 })
 
-app.post('/jogo', async (req, res) => {
+app.post('/jogo', upload.single('file'), async (req, res) => {
 	const body = req.body
+	console.log(req.file)
 	const name = body.name
 	const description = body.description
 	const releaseDate = body.releaseDate
 	const players = body.players 
-	const image = body.image
+	const image = req.file
 	const studioId = body.studioId
 
 	try {
@@ -100,14 +123,14 @@ app.get('/estudio/:id', async (req, res) => {
 })
 
 
-app.post('/user/logon', async (req, res) => {
+app.post('/user/logon', upload.single('file'), async (req, res) => {
 	const body = req.body
 
 	const email = body.email
 	const name = body.name
 	const description = body.description
 	const password = body.password
-	const image = body.image
+	const image = req.file
 
 	try {
 		const user = await addUser(email, name, description, password, image)
@@ -115,7 +138,7 @@ app.post('/user/logon', async (req, res) => {
 		const accessToken = jwt.sign({ 
 			id: user.EMAIL,
 		}, process.env.JWT_SECRET, { expiresIn: "3d" })
-		
+
 		const { SENHA, ...other } = user
 		res.status(200).json({ ...other, accessToken })
 	} catch (error) {
@@ -179,10 +202,7 @@ app.get('/genero', async (req, res) => {
 })
 
 
-app.get('/', (req, res) => {
-  res.send('Olá Mundo!')
-})
-
 app.listen(port, () => {
   console.log(`App de exemplo esta rodando na porta ${port}`)
 })
+
