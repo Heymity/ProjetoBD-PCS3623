@@ -1,0 +1,106 @@
+.avaliacao-container {
+    display: flex;
+    height: 100vh;
+    background-color: #12121224;
+    color: #fff;
+  }
+  
+  .sidebar {
+    width: 20%;
+    padding: 20px;
+    background-color: #150a173d;
+    border-right: 1px solid #333;
+    text-align: center;
+  }
+  
+  .sidebar img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .sidebar button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #8b8ae1;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .sidebar button:hover {
+    opacity: 0.8;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .main-content textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #1e1e2f55;
+    border: 1px solid #555;
+    color: #fff;
+    resize: none;
+    outline: none;
+  }
+  
+  .main-content input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #1e1e2f55;
+    border: 1px solid #555;
+    color: #fff;
+    outline: none;
+  }
+  
+  .main-content button {
+    padding: 10px;
+    background-color: #8b8ae1;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .main-content button:hover {
+    opacity: 0.8;
+  }
+  
+  .user-profile {
+    width: 20%;
+    padding: 20px;
+    background-color: #150a173d;
+    border-left: 1px solid #333;
+    text-align: center;
+  }
+  
+  .user-profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  .sidebar button {
+    width: 100%; /* Define a largura igual à da imagem */
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #8b8ae1;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .sidebar button:hover {
+    opacity: 0.8;
+  }
