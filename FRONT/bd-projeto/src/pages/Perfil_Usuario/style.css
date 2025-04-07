@@ -1,0 +1,82 @@
+.perfil-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #12121224;
+    color: #fff;
+  }
+  
+  .perfil-content {
+    text-align: center;
+    background-color: #2e2d4e;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .perfil-content img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .perfil-content button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #8b8ae1;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .perfil-content button:hover {
+    opacity: 0.8;
+  }
+  
+  .avaliacoes-content {
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .avaliacoes-content h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .avaliacoes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .avaliacao-card {
+    display: flex;
+    gap: 20px;
+    background-color: #2e2d4e;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .avaliacao-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    background-color: #38375a;
+  }
+  
+  .avaliacao-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  .avaliacao-card div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
