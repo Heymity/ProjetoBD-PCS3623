@@ -1,0 +1,103 @@
+.game-detail-container {
+    display: flex;
+    height: 100vh;
+    background-color: #12121224;
+    color: #fff;
+  }
+  
+  .sidebar {
+    width: 20%;
+    padding: 20px;
+    background-color: #150a173d;
+    border-right: 1px solid #333;
+    text-align: center;
+  }
+  
+  .sidebar img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    min-width: 100%;
+  }
+  
+  .sidebar button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #8b8ae1;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .sidebar button:hover {
+    opacity: 0.8;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .main-content h2 {
+    margin-bottom: 10px;
+  }
+  
+  .avaliacoes-list {
+    margin-top: 20px;
+  }
+  
+  .avaliacao-card {
+    background-color: #1e1e2f55;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .user-profile {
+    width: 20%;
+    padding: 20px;
+    background-color: #150a173d;
+    border-left: 1px solid #333;
+    text-align: center;
+  }
+  
+  .user-profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  .avaliacao-card {
+    background-color: #1e1e2f55;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .avaliacao-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .avaliacao-perfil {
+    min-width: 100%;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover; /* Garante que a imagem se ajuste corretamente */
+  }
+  
+  .avaliacao-info h3 {
+    margin: 0;
+    font-size: 1.1em;
+  }
+  
+  .avaliacao-info p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #ccc;
+  }
