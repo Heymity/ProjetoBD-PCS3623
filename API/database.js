@@ -20,7 +20,10 @@ export async function queryGames() {
 }
 
 export async function gameById(id) {
-    const [rows] = await pool.query("SELECT * FROM PCS_BD.JOGO WHERE ID_JOGO = ?", [id])
+    const [rows] = await pool.query(`
+                SELECT JOGO.ID_JOGO, NOME, DESCRIÇÃO, DATA_LANÇAMENTO, MEMBROS, ID_FOTO, ID_ESTÚDIO, avg(AVALIAÇÃO.NOTA) AS NOTA 
+                FROM PCS_BD.JOGO LEFT JOIN PCS_BD.AVALIAÇÃO ON AVALIAÇÃO.ID_JOGO = JOGO.ID_JOGO WHERE JOGO.ID_JOGO = ?
+                GROUP BY JOGO.ID_JOGO`, [id])
     return rows
 }
 
