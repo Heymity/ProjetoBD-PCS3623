@@ -103,6 +103,15 @@ export async function estudioById(id) {
     return rows
 }
 
+export async function addEstudio(name, image) {
+    if (!name || !image) {
+        throw new Error('Missing required fields')
+    }
+    const imageId = await handleImages(image.filename)
+    const [rows] = await pool.query("INSERT INTO PCS_BD.ESTÚDIO VALUES (?, ?, ?)", [0, name, imageId])
+    return rows
+}
+
 export async function addUser(email, name, description, password, image) {
     if (!email || !name || !description || !password) {
         throw new Error('Missing required fields')

@@ -1,7 +1,7 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { getUserByUsername, queryGames, gameById, addGame, searchGames, getGenders, queryEstudios, estudioById, addUser, getUserForLogin, getUserByEmail, addAvaliation, getAvaliationByGameId, getFotoById, getAvaliationByUserName } from './database.js'
+import { getUserByUsername, addEstudio, queryGames, gameById, addGame, searchGames, getGenders, queryEstudios, estudioById, addUser, getUserForLogin, getUserByEmail, addAvaliation, getAvaliationByGameId, getFotoById, getAvaliationByUserName } from './database.js'
 
 import dotenv from 'dotenv' 
 import multer from 'multer'
@@ -117,6 +117,19 @@ app.post('/jogo/search', async (req, res) => {
 app.get('/estudio', async (req, res) => {
 	const games = await queryEstudios();
     res.send(games)
+})
+
+app.post('/estudio', upload.single('file'), async (req, res) => {
+	const body = req.body
+	const name = body.name
+	const image = req.file
+	try {
+		const estudio = await addEstudio(name, image);
+		res.send(estudio)
+	} catch (error) {
+		console.log(error)
+		res.status(400).send(error.message)
+	}
 })
 
 app.get('/estudio/:id', async (req, res) => {
