@@ -161,7 +161,7 @@ export async function getUserByEmail(email) {
     const [rows] = await pool.query(
         "SELECT * FROM PCS_BD.USUÁRIO WHERE EMAIL = ?", 
         [email])
-    return rows
+    return rows[0]
 }
 
 export async function getFotoById(fotoId) {
