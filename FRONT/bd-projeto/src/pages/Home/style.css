@@ -8,10 +8,30 @@
   .sidebar {
     width: 20%;
     padding: 20px;
+    overflow: auto;
     background-color: #150a173d;
     border-right: 1px solid #333;
   }
+
+  .sidebar::-webkit-scrollbar {
+    width: 10px; /* Largura da scrollbar */
+  }
   
+  .sidebar::-webkit-scrollbar-track {
+    background: #1e1e2f; /* Cor do fundo da scrollbar */
+    border-radius: 10px; /* Bordas arredondadas */
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb {
+    background: #555; /* Cor da barra de rolagem */
+    border-radius: 10px; /* Bordas arredondadas */
+    border: 2px solid #1e1e2f; /* Adiciona um contorno para combinar com o fundo */
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb:hover {
+    background: #777; /* Cor ao passar o mouse */
+}
+
   .sidebar h2 {
     margin-bottom: 10px;
   }

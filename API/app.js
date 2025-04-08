@@ -76,6 +76,7 @@ app.post('/jogo', upload.single('file'), async (req, res) => {
 		const game = await addGame(name, description, releaseDate, players, image, studioId, genderId)
 		res.send(game)
 	} catch (error) {
+		console.log(error)
 		res.status(400).send(error.message)
 	}
 })

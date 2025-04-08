@@ -80,13 +80,17 @@
   
   .avaliacao-header {
     display: flex;
+    width: 130px;
+    min-width: 130px;
+    /*overflow-wrap: anywhere; */
     align-items: center; /* Alinha verticalmente a imagem e o texto */
     gap: 10px; /* Espaçamento entre a imagem e o texto */
     margin-bottom: 10px;
   }
   
   .avaliacao-perfil {
-    width: 50px; /* Largura da imagem */
+    max-width: 100%;
+    /*width: 130px; /* Largura da imagem */
     height: 50px; /* Altura da imagem */
     border-radius: 50%; /* Torna a imagem redonda */
     object-fit: cover; /* Garante que a imagem se ajuste corretamente */
@@ -95,6 +99,7 @@
   
   .avaliacao-info {
     display: flex;
+    overflow-wrap: anywhere;
     flex-direction: column; /* Organiza o texto em coluna */
   }
   
@@ -110,9 +115,9 @@
   }
 
   .avaliacoes-list {
-    max-height: 400px; /* Define a altura máxima da lista */
+    max-height: 100%; /* Define a altura máxima da lista */
     overflow-y: auto; /* Adiciona a barra de rolagem vertical */
-    padding-right: 10px; /* Espaçamento interno para evitar sobreposição com a scrollbar */
+    padding: 10px; /* Espaçamento interno para evitar sobreposição com a scrollbar */
   }
   
   /* Estiliza a scrollbar */
