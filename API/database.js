@@ -153,6 +153,17 @@ export async function getAvaliationByUserName(username) {
     return rows
 }
 
+export async function getUserByEmail(email) {
+    if (!email) {
+        throw new Error('Missing required fields')
+    }
+
+    const [rows] = await pool.query(
+        "SELECT * FROM PCS_BD.USUÁRIO WHERE EMAIL = ?", 
+        [email])
+    return rows
+}
+
 export async function getFotoById(fotoId) {
     const [rows] = await pool.query("SELECT FOTO FROM PCS_BD.FOTO WHERE ID_FOTO = ?", [fotoId])
 	if (rows.length === 0) {

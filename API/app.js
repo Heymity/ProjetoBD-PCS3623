@@ -1,10 +1,11 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { queryGames, gameById, addGame, searchGames, getGenders, queryEstudios, estudioById, addUser, getUserForLogin, addAvaliation, getAvaliationByGameId, getFotoById, getAvaliationByUserName } from './database.js'
+import { queryGames, gameById, addGame, searchGames, getGenders, queryEstudios, estudioById, addUser, getUserForLogin, getUserByEmail, addAvaliation, getAvaliationByGameId, getFotoById, getAvaliationByUserName } from './database.js'
 
 import dotenv from 'dotenv' 
 import multer from 'multer'
+import cors from 'cors'
 
 dotenv.config()
 
@@ -123,6 +124,15 @@ app.get('/estudio/:id', async (req, res) => {
 	res.send(est)
 })
 
+app.get('/user/:email', async (req, res) => {
+	const params = req.params
+	const user = await getUserByEmail(params.email);
+	if (!user) return res.status(404).json("Non existent user")
+
+	const { SENHA, ...other } = user
+	res.status(200).json(other)
+})
+
 
 app.post('/user/logon', upload.single('file'), async (req, res) => {
 	const body = req.body
@@ -143,6 +153,7 @@ app.post('/user/logon', upload.single('file'), async (req, res) => {
 		const { SENHA, ...other } = user
 		res.status(200).json({ ...other, accessToken })
 	} catch (error) {
+		console.log(error)
 		res.status(400).send(error.message)
 	}
 		
