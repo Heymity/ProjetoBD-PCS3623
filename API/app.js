@@ -1,7 +1,7 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { queryGames, gameById, addGame, searchGames, getGenders, queryEstudios, estudioById, addUser, getUserForLogin, getUserByEmail, addAvaliation, getAvaliationByGameId, getFotoById, getAvaliationByUserName } from './database.js'
+import { getUserByUsername, queryGames, gameById, addGame, searchGames, getGenders, queryEstudios, estudioById, addUser, getUserForLogin, getUserByEmail, addAvaliation, getAvaliationByGameId, getFotoById, getAvaliationByUserName } from './database.js'
 
 import dotenv from 'dotenv' 
 import multer from 'multer'
@@ -132,6 +132,15 @@ app.get('/user/:email', async (req, res) => {
 	const { SENHA, ...other } = user
 	res.status(200).json(other)
 })
+
+app.get('/user/username/:username', async (req, res) => {
+	const params = req.params
+	const user = await getUserByUsername(params.username);
+	if (!user) return res.status(404).json("Non existent user")
+
+	const { SENHA, ...other } = user
+	res.status(200).json(other)
+}
 
 
 app.post('/user/logon', upload.single('file'), async (req, res) => {
