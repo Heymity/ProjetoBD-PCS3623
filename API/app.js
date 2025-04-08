@@ -70,9 +70,10 @@ app.post('/jogo', upload.single('file'), async (req, res) => {
 	const players = body.players 
 	const image = req.file
 	const studioId = body.studioId
+	const genderId = body.generoId
 
 	try {
-		const game = await addGame(name, description, releaseDate, players, image, studioId)
+		const game = await addGame(name, description, releaseDate, players, image, studioId, genderId)
 		res.send(game)
 	} catch (error) {
 		res.status(400).send(error.message)

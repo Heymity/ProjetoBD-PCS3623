@@ -28,14 +28,15 @@ export async function gameById(id) {
     return rows
 }
 
-export async function addGame(name, description, releaseDate, players, image, studioId) {
-    if (!name || !description || !releaseDate || !players || !image || !studioId) {
+export async function addGame(name, description, releaseDate, players, image, studioId, genderId) {
+    if (!name || !description || !releaseDate || !players || !image || !studioId || !genderId) {
         throw new Error('Missing required fields')
     }
 
     const imageId = await handleImages(image.filename)
 
     const [rows] = await pool.query("INSERT INTO PCS_BD.JOGO VALUES (?, ?, ?, ?, ?, ?, ?)", [0, name, description, releaseDate, players, imageId, studioId])
+    await pool.query("INSERT INTO PCS_BD.GÊNERO_JOGO (ID_GÊNERO, ID_JOGO) VALUES (?, ?)", [genderId, rows.insertId])
     return rows
 }
 
