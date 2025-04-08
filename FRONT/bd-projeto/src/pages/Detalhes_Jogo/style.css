@@ -80,15 +80,22 @@
   
   .avaliacao-header {
     display: flex;
-    align-items: center;
+    align-items: center; /* Alinha verticalmente a imagem e o texto */
+    gap: 10px; /* Espaçamento entre a imagem e o texto */
     margin-bottom: 10px;
   }
   
   .avaliacao-perfil {
-    min-width: 100%;
-    border-radius: 50%;
-    margin-right: 10px;
+    width: 50px; /* Largura da imagem */
+    height: 50px; /* Altura da imagem */
+    border-radius: 50%; /* Torna a imagem redonda */
     object-fit: cover; /* Garante que a imagem se ajuste corretamente */
+    flex-shrink: 0; /* Impede que a imagem seja redimensionada */
+  }
+  
+  .avaliacao-info {
+    display: flex;
+    flex-direction: column; /* Organiza o texto em coluna */
   }
   
   .avaliacao-info h3 {
@@ -100,4 +107,30 @@
     margin: 0;
     font-size: 0.9em;
     color: #ccc;
+  }
+
+  .avaliacoes-list {
+    max-height: 400px; /* Define a altura máxima da lista */
+    overflow-y: auto; /* Adiciona a barra de rolagem vertical */
+    padding-right: 10px; /* Espaçamento interno para evitar sobreposição com a scrollbar */
+  }
+  
+  /* Estiliza a scrollbar */
+  .avaliacoes-list::-webkit-scrollbar {
+    width: 10px; /* Largura da scrollbar */
+  }
+  
+  .avaliacoes-list::-webkit-scrollbar-track {
+    background: #1e1e2f; /* Cor do fundo da scrollbar */
+    border-radius: 10px; /* Bordas arredondadas */
+  }
+  
+  .avaliacoes-list::-webkit-scrollbar-thumb {
+    background: #555; /* Cor da barra de rolagem */
+    border-radius: 10px; /* Bordas arredondadas */
+    border: 2px solid #1e1e2f; /* Adiciona um contorno para combinar com o fundo */
+  }
+  
+  .avaliacoes-list::-webkit-scrollbar-thumb:hover {
+    background: #777; /* Cor ao passar o mouse */
   }

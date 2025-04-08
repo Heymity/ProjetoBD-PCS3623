@@ -58,6 +58,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    max-height: 100%; /* Defina a altura máxima da lista */
+    overflow-y: auto; /* Adiciona o scroll vertical */
+    padding: 10px; /* Opcional: Adiciona espaçamento interno */
   }
 
   .user-profile {
@@ -69,6 +72,7 @@
   }
   
   .user-profile img {
+    object-fit: cover;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -103,3 +107,99 @@
     margin: 5px 0;
     font-size: 14px;
   }
+
+  .games-list::-webkit-scrollbar {
+    width: 10px; /* Largura da scrollbar */
+  }
+  
+  .games-list::-webkit-scrollbar-track {
+    background: #1e1e2f; /* Cor do fundo da scrollbar */
+    border-radius: 10px; /* Bordas arredondadas */
+  }
+  
+  .games-list::-webkit-scrollbar-thumb {
+    background: #555; /* Cor da barra de rolagem */
+    border-radius: 10px; /* Bordas arredondadas */
+    border: 2px solid #1e1e2f; /* Adiciona um contorno para combinar com o fundo */
+  }
+  
+  .games-list::-webkit-scrollbar-thumb:hover {
+    background: #777; /* Cor ao passar o mouse */
+}
+
+.genre-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espaçamento entre os itens */
+}
+
+.genre-checkboxes label {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaçamento entre a checkbox e o texto */
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.genre-checkboxes label:hover {
+  color: #aaa; /* Cor ao passar o mouse */
+}
+
+.genre-checkboxes input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #555; /* Cor da checkbox */
+  cursor: pointer;
+  border: 1px solid #333;
+  border-radius: 4px; /* Bordas arredondadas */
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.genre-checkboxes input[type="checkbox"]:hover {
+  border-color: #777; /* Cor da borda ao passar o mouse */
+}
+
+.genre-checkboxes input[type="checkbox"]:checked {
+  background-color: #555; /* Cor de fundo quando marcada */
+  border-color: #777; /* Cor da borda quando marcada */
+}
+
+.logout-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #ff4d4d; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #ff1a1a; /* Cor ao passar o mouse */
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #6c63ff; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  border: none;
+  border-radius: 5px; /* Bordas arredondadas */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #5a54d1; /* Cor ao passar o mouse */
+  transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+.button:active {
+  transform: scale(0.95); /* Efeito de clique */
+}

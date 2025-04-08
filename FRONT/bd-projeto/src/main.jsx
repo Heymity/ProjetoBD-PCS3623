@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import Detalhes_Jogo from './pages/Detalhes_Jogo';
 import Avaliacao from './pages/Avaliacao';
 import Perfil_Usuario from './pages/Perfil_Usuario';
+import Adicionar_Jogo from './pages/Adicionar_Jogo';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -18,6 +19,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/" element={<Home />} />
         <Route path="/jogo/:id" element={<Detalhes_Jogo />} />
         <Route path="/avaliar/:id" element={<Avaliacao />} />
+        <Route path="/adicionar-jogo" element={<Adicionar_Jogo />} />
         <Route path="/perfil/:nome" element={<Perfil_Usuario />} />
       </Routes>
     </BrowserRouter>
