@@ -140,7 +140,7 @@ app.get('/user/username/:username', async (req, res) => {
 
 	const { SENHA, ...other } = user
 	res.status(200).json(other)
-}
+})
 
 
 app.post('/user/logon', upload.single('file'), async (req, res) => {
